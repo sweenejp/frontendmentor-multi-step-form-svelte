@@ -1,0 +1,44 @@
+[
+	{
+		"billingCycles": {
+			"monthly": {
+				"price": 9,
+				"monthsFree": null
+			},
+			"yearly": {
+				"price": 90,
+				"monthsFree": 2
+			}
+		},
+		"displayValue": "Arcade",
+		"value": "arcade"
+	},
+	{
+		"billingCycles": {
+			"monthly": {
+				"price": 12,
+				"monthsFree": null
+			},
+			"yearly": {
+				"price": 120,
+				"monthsFree": 2
+			}
+		},
+		"displayValue": "Advanced",
+		"value": "advanced"
+	},
+	{
+		"billingCycles": {
+			"monthly": {
+				"price": 15,
+				"monthsFree": null
+			},
+			"yearly": {
+				"price": 150,
+				"monthsFree": 2
+			}
+		},
+		"displayValue": "Pro",
+		"value": "pro"
+	}
+]

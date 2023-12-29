@@ -1,0 +1,47 @@
+[
+	{
+		"billingCycles": {
+			"monthly": {
+				"price": 1,
+				"monthsFree": null
+			},
+			"yearly": {
+				"price": 10,
+				"monthsFree": 2
+			}
+		},
+		"description": "Access to multiplayer games",
+		"displayValue": "Online service",
+		"value": "online-service"
+	},
+	{
+		"billingCycles": {
+			"monthly": {
+				"price": 2,
+				"monthsFree": null
+			},
+			"yearly": {
+				"price": 20,
+				"monthsFree": 2
+			}
+		},
+		"description": "Extra 1TB of cloud save",
+		"displayValue": "Larger storage",
+		"value": "larger-storage"
+	},
+	{
+		"billingCycles": {
+			"monthly": {
+				"price": 2,
+				"monthsFree": null
+			},
+			"yearly": {
+				"price": 20,
+				"monthsFree": 2
+			}
+		},
+		"description": "Custom theme on your profile",
+		"displayValue": "Customizable profile",
+		"value": "customizable-profile"
+	}
+]
