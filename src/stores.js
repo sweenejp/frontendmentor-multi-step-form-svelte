@@ -43,3 +43,7 @@ export const formStore = createFormStore();
 export const selectedBillingCycle = derived(formStore, ($formStore) =>
 	$formStore.isYearly ? 'yearly' : 'monthly'
 );
+
+/** @typedef {'idle' |'pending' | 'success'} FormSubmissionState */
+/** @type {import('svelte/store').Writable<FormSubmissionState>} */
+export const formSubmission = writable('idle');

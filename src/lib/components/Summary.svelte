@@ -1,7 +1,8 @@
 <script>
 	import FormWrapper from '$lib/components/FormWrapper.svelte';
 	import { billingCycleAbrevs, billingCycleFull, billingCyclePer } from '$lib/copyMaps';
-	import { formStore, selectedBillingCycle } from '../../stores';
+	import mockFetch from '$lib/mockFetch';
+	import { formStore, selectedBillingCycle, formSubmission } from '../../stores';
 
 	/** @type {PlanI[]} */
 	export let plans;
@@ -17,6 +18,12 @@
 	}, 0);
 
 	const total = selectedPlanPrice + selectedAddonsTotal;
+
+	const handleSubmit = async () => {
+		$formSubmission = 'pending';
+		const res = await mockFetch();
+		$formSubmission = res.status;
+	};
 </script>
 
 <FormWrapper title="Finishing up" subtitle="Double-check everything looks OK before confirming.">
@@ -41,8 +48,7 @@
 	</div>
 
 	<div slot="form-actions">
-		<button on:click={formStore.goToPreviousStep}>Go Back</button><button
-			on:click={() => console.log($formStore)}>Confirm</button
-		>
+		<button on:click={formStore.goToPreviousStep}>Go Back</button>
+		<button on:click={handleSubmit}>Confirm</button>
 	</div>
 </FormWrapper>
