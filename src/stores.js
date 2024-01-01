@@ -5,7 +5,6 @@ import { writable, derived } from 'svelte/store';
  * @property {string} name
  * @property {string} email
  * @property {string} phone
- * @property {Record<string, string | null | undefined>} errors
  * @property {string} plan
  * @property {boolean} isYearly
  * @property {string[]} addOns
@@ -17,7 +16,6 @@ const initialFormStoreState = {
 	name: '',
 	email: '',
 	phone: '',
-	errors: {},
 	plan: 'arcade',
 	isYearly: false,
 	addOns: [],
@@ -44,6 +42,20 @@ export const selectedBillingCycle = derived(formStore, ($formStore) =>
 	$formStore.isYearly ? 'yearly' : 'monthly'
 );
 
-/** @typedef {'idle' |'pending' | 'success'} FormSubmissionState */
-/** @type {import('svelte/store').Writable<FormSubmissionState>} */
-export const formSubmission = writable('idle');
+/**
+ * @typedef OrderParams
+ * @property {string} name
+ * @property {string} email
+ * @property {string} phone
+ * @property {string} plan
+ * @property {'monthly' | 'yearly'} billingCycle
+ * @property {string[]} addOns
+ */
+
+/**
+ * @typedef FormSubmissionStoreState
+ * @property {'idle' | 'pending' | 'success'} status
+ * @property {OrderParams | null} data
+ * */
+/** @type {import('svelte/store').Writable<FormSubmissionStoreState>} */
+export const formSubmissionStore = writable({ status: 'idle', data: null });

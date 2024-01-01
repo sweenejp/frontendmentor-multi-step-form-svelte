@@ -3,6 +3,9 @@
 	import hasError from '$lib/hasError';
 	import { formStore } from '../../stores';
 
+	/** @type {Record<string, string | null | undefined>}*/
+	let errors = {};
+
 	/** @param {Event} event */
 	function handleInput(event) {
 		if (!event.target || !(event.target instanceof HTMLInputElement)) {
@@ -11,12 +14,12 @@
 
 		const { name } = event.target;
 		// validate on input change only if there is an existing error
-		if (!$formStore.errors[name]) {
+		if (!errors[name]) {
 			return;
 		}
 
 		const error = hasError(event.target);
-		$formStore.errors[name] = error;
+		errors[name] = error;
 	}
 
 	/** @param {FocusEvent} event */
@@ -27,7 +30,7 @@
 
 		const { name } = event.target;
 		const error = hasError(event.target);
-		$formStore.errors[name] = error;
+		errors[name] = error;
 	}
 
 	function handleNext() {
@@ -35,10 +38,10 @@
 		formEl?.querySelectorAll('input').forEach((element) => {
 			const { name } = element;
 			const error = hasError(element);
-			$formStore.errors[name] = error;
+			errors[name] = error;
 		});
 
-		if (Object.values($formStore.errors).some((error) => Boolean(error))) {
+		if (Object.values(errors).some((error) => Boolean(error))) {
 			return;
 		}
 
@@ -62,8 +65,8 @@
 				on:blur={handleBlur}
 			/>
 		</label>
-		{#if $formStore.errors.name}
-			<p>{$formStore.errors.name}</p>
+		{#if errors.name}
+			<p>{errors.name}</p>
 		{/if}
 		<label
 			>Email Address<input
@@ -76,8 +79,8 @@
 				on:blur={handleBlur}
 			/>
 		</label>
-		{#if $formStore.errors.email}
-			<p>{$formStore.errors.email}</p>
+		{#if errors.email}
+			<p>{errors.email}</p>
 		{/if}
 		<label
 			>Phone Number<input
@@ -90,8 +93,8 @@
 				on:blur={handleBlur}
 			/>
 		</label>
-		{#if $formStore.errors.phone}
-			<p>{$formStore.errors.phone}</p>
+		{#if errors.phone}
+			<p>{errors.phone}</p>
 		{/if}
 	</div>
 	<div slot="form-actions">

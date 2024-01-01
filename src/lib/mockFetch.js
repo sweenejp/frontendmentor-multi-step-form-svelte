@@ -1,7 +1,8 @@
-export default function mockFetch() {
+/** @param {any} params */
+export default function mockFetch(params) {
 	return new Promise((resolve) => {
 		setTimeout(() => {
-			resolve({ status: 'success' });
+			resolve({ status: 'success', data: params });
 		}, 3000);
 	});
 }

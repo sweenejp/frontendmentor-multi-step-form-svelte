@@ -2,7 +2,7 @@
 	import FormWrapper from '$lib/components/FormWrapper.svelte';
 	import { billingCycleAbrevs, billingCycleFull, billingCyclePer } from '$lib/copyMaps';
 	import mockFetch from '$lib/mockFetch';
-	import { formStore, selectedBillingCycle, formSubmission } from '../../stores';
+	import { formStore, selectedBillingCycle, formSubmissionStore } from '../../stores';
 
 	/** @type {PlanI[]} */
 	export let plans;
@@ -19,10 +19,19 @@
 
 	const total = selectedPlanPrice + selectedAddonsTotal;
 
+	const submissionParams = {
+		name: $formStore.name,
+		email: $formStore.email,
+		phone: $formStore.phone,
+		plan: $formStore.plan,
+		addOns: $formStore.addOns,
+		billingCycle: $selectedBillingCycle
+	};
+
 	const handleSubmit = async () => {
-		$formSubmission = 'pending';
-		const res = await mockFetch();
-		$formSubmission = res.status;
+		$formSubmissionStore.status = 'pending';
+		const res = await mockFetch(submissionParams);
+		$formSubmissionStore = res;
 	};
 </script>
 
