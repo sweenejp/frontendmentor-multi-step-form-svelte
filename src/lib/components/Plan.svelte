@@ -2,7 +2,11 @@
 	import FormWrapper from '$lib/components/FormWrapper.svelte';
 	import { billingCycleAbrevs } from '$lib/copyMaps';
 	import { formStore, selectedBillingCycle } from '../../stores';
+	import ArcadeIcon from './icons/ArcadeIcon.svelte';
 	import Button from './Button.svelte';
+	import RadioButton from './RadioButton.svelte';
+	import AdvancedIcon from './icons/AdvancedIcon.svelte';
+	import ProIcon from './icons/ProIcon.svelte';
 
 	/** @type {PlanI[]} */
 	export let plans;
@@ -12,24 +16,27 @@
 	<div slot="form-content">
 		<fieldset>
 			{#each plans as plan}
-				<div>
-					<input
-						type="radio"
-						id={plan.value}
-						name={plan.value}
-						value={plan.value}
-						bind:group={$formStore.plan}
-					/>
-					<label for={plan.value}>{plan.displayValue}</label>
-				</div>
-				<p>
-					${plan.billingCycles[$selectedBillingCycle].price}/{billingCycleAbrevs[
-						$selectedBillingCycle
-					]}
-				</p>
-				{#if plan.billingCycles[$selectedBillingCycle].monthsFree}
-					<p>{plan.billingCycles[$selectedBillingCycle].monthsFree} months free</p>
-				{/if}
+				<RadioButton
+					label={plan.displayValue}
+					name={plan.value}
+					value={plan.value}
+					sublabel={`$${plan.billingCycles[$selectedBillingCycle].price}/${billingCycleAbrevs[$selectedBillingCycle]}`}
+					details={plan.billingCycles[$selectedBillingCycle].monthsFree
+						? `${plan.billingCycles[$selectedBillingCycle].monthsFree} months free`
+						: ''}
+					bind:group={$formStore.plan}
+					selected={$formStore.plan === plan.value}
+				>
+					<svelte:fragment slot="icon">
+						{#if plan.value === 'arcade'}
+							<ArcadeIcon />
+						{:else if plan.value === 'advanced'}
+							<AdvancedIcon />
+						{:else if plan.value === 'pro'}
+							<ProIcon />
+						{/if}
+					</svelte:fragment>
+				</RadioButton>
 			{/each}
 		</fieldset>
 		<label
@@ -45,3 +52,14 @@
 		<Button variant="tertiary" on:click={formStore.goToPreviousStep}>Go Back</Button>
 	</svelte:fragment>
 </FormWrapper>
+
+<style>
+	fieldset {
+		border: none;
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+
+		margin-bottom: 24px;
+	}
+</style>
