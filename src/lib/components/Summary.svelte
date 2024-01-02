@@ -3,6 +3,7 @@
 	import { billingCycleAbrevs, billingCycleFull, billingCyclePer } from '$lib/copyMaps';
 	import mockFetch from '$lib/mockFetch';
 	import { formStore, selectedBillingCycle, formSubmissionStore } from '../../stores';
+	import Button from './Button.svelte';
 
 	/** @type {PlanI[]} */
 	export let plans;
@@ -57,7 +58,7 @@
 	</div>
 
 	<svelte:fragment slot="form-actions">
-		<button on:click={handleSubmit}>Confirm</button>
-		<button on:click={formStore.goToPreviousStep}>Go Back</button>
+		<Button primary on:click={handleSubmit}>Confirm</Button>
+		<Button secondary on:click={formStore.goToPreviousStep}>Go Back</Button>
 	</svelte:fragment>
 </FormWrapper>

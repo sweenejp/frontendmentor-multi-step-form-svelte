@@ -2,12 +2,15 @@
 	import FormWrapper from '$lib/components/FormWrapper.svelte';
 	import hasError from '$lib/hasError';
 	import { formStore } from '../../stores';
+	import Button from './Button.svelte';
 	import TextField from './TextField.svelte';
 
 	/** @type {Record<string, string | null | undefined>}*/
 	const errors = {};
 
-	function handleNext() {
+	/** @param {Event} event */
+	function handleNext(event) {
+		event.preventDefault();
 		const formEl = document.querySelector('form');
 		/** @type {HTMLInputElement} */
 		let erroredInput;
@@ -65,7 +68,7 @@
 		/>
 	</div>
 	<svelte:fragment slot="form-actions">
-		<button on:click|preventDefault={handleNext}>Next Step</button>
+		<Button primary on:click={handleNext}>Next Step</Button>
 	</svelte:fragment>
 </FormWrapper>
 

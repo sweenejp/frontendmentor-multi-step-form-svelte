@@ -2,6 +2,7 @@
 	import FormWrapper from '$lib/components/FormWrapper.svelte';
 	import { billingCycleAbrevs } from '$lib/copyMaps';
 	import { formStore, selectedBillingCycle } from '../../stores';
+	import Button from './Button.svelte';
 
 	/** @type {PlanI[]} */
 	export let plans;
@@ -40,7 +41,7 @@
 		>
 	</div>
 	<svelte:fragment slot="form-actions">
-		<button on:click={formStore.goToNextStep}>Next Step </button>
-		<button on:click={formStore.goToPreviousStep}>Go Back</button>
+		<Button primary on:click={formStore.goToNextStep}>Next Step</Button>
+		<Button secondary on:click={formStore.goToPreviousStep}>Go Back</Button>
 	</svelte:fragment>
 </FormWrapper>
