@@ -41,4 +41,17 @@
 		flex-direction: row-reverse;
 		justify-content: space-between;
 	}
+
+	h1 {
+		font-size: 24px;
+		color: var(--marine-blue);
+		margin-bottom: 16px;
+	}
+
+	h2 {
+		font-size: 16px;
+		margin-bottom: 16px;
+		font-weight: 400;
+		color: var(--cool-gray);
+	}
 </style>

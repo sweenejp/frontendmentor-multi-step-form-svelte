@@ -2,46 +2,28 @@
 	import FormWrapper from '$lib/components/FormWrapper.svelte';
 	import hasError from '$lib/hasError';
 	import { formStore } from '../../stores';
+	import TextField from './TextField.svelte';
 
 	/** @type {Record<string, string | null | undefined>}*/
-	let errors = {};
-
-	/** @param {Event} event */
-	function handleInput(event) {
-		if (!event.target || !(event.target instanceof HTMLInputElement)) {
-			return;
-		}
-
-		const { name } = event.target;
-		// validate on input change only if there is an existing error
-		if (!errors[name]) {
-			return;
-		}
-
-		const error = hasError(event.target);
-		errors[name] = error;
-	}
-
-	/** @param {FocusEvent} event */
-	function handleBlur(event) {
-		if (!event.target || !(event.target instanceof HTMLInputElement)) {
-			return;
-		}
-
-		const { name } = event.target;
-		const error = hasError(event.target);
-		errors[name] = error;
-	}
+	const errors = {};
 
 	function handleNext() {
 		const formEl = document.querySelector('form');
+		/** @type {HTMLInputElement} */
+		let erroredInput;
 		formEl?.querySelectorAll('input').forEach((element) => {
 			const { name } = element;
 			const error = hasError(element);
 			errors[name] = error;
+			if (error && !erroredInput) {
+				erroredInput = element;
+			}
 		});
 
-		if (Object.values(errors).some((error) => Boolean(error))) {
+		// @ts-ignore
+		if (erroredInput) {
+			erroredInput.focus();
+
 			return;
 		}
 
@@ -50,54 +32,47 @@
 </script>
 
 <FormWrapper
-	title="Personal Info"
+	title="Personal info"
 	subtitle="Please provide your name, email address, and phone number."
 >
-	<div slot="form-content">
-		<label
-			>Name<input
-				type="text"
-				name="name"
-				placeholder="e.g Stephen King"
-				bind:value={$formStore.name}
-				required
-				on:input={handleInput}
-				on:blur={handleBlur}
-			/>
-		</label>
-		{#if errors.name}
-			<p>{errors.name}</p>
-		{/if}
-		<label
-			>Email Address<input
-				type="email"
-				name="email"
-				placeholder="e.g stephenking@lorem.com"
-				bind:value={$formStore.email}
-				required
-				on:input={handleInput}
-				on:blur={handleBlur}
-			/>
-		</label>
-		{#if errors.email}
-			<p>{errors.email}</p>
-		{/if}
-		<label
-			>Phone Number<input
-				type="tel"
-				name="phone"
-				placeholder="e.g stephenking@lorem.com"
-				bind:value={$formStore.phone}
-				required
-				on:input={handleInput}
-				on:blur={handleBlur}
-			/>
-		</label>
-		{#if errors.phone}
-			<p>{errors.phone}</p>
-		{/if}
+	<div slot="form-content" class="form-content">
+		<TextField
+			label="Name"
+			type="text"
+			name="name"
+			placeholder="e.g Stephen King"
+			bind:value={$formStore.name}
+			required
+			error={errors.name}
+		/>
+		<TextField
+			label="Email Address"
+			type="email"
+			name="email"
+			placeholder="e.g stephenking@lorem.com"
+			bind:value={$formStore.email}
+			required
+			error={errors.email}
+		/>
+		<TextField
+			label="Phone Number"
+			type="tel"
+			name="phone"
+			placeholder="e.g +1 234 567 890"
+			bind:value={$formStore.phone}
+			required
+			error={errors.phone}
+		/>
 	</div>
 	<svelte:fragment slot="form-actions">
 		<button on:click|preventDefault={handleNext}>Next Step</button>
 	</svelte:fragment>
 </FormWrapper>
+
+<style>
+	.form-content {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+</style>
