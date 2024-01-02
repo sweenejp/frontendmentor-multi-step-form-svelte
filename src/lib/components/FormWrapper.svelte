@@ -27,7 +27,7 @@
 		margin: auto;
 		background-color: white;
 		border-radius: 10px;
-		padding: 24px 16px;
+		padding: 32px 24px;
 	}
 
 	.form-actions {
