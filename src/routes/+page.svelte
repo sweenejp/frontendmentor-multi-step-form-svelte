@@ -26,6 +26,26 @@
 {/if}
 
 <style>
+	@font-face {
+		font-family: 'Ubuntu';
+		font-weight: 700;
+		font-style: normal;
+		src: url('/fonts/Ubuntu-Bold.ttf');
+	}
+
+	@font-face {
+		font-family: 'Ubuntu';
+		font-weight: 600;
+		font-style: normal;
+		src: url('/fonts/Ubuntu-Medium.ttf');
+	}
+
+	@font-face {
+		font-family: 'Ubuntu';
+		font-weight: 400;
+		font-style: normal;
+		src: url('/fonts/Ubuntu-Regular.ttf');
+	}
 	:root {
 		--marine-blue: hsl(213, 96%, 18%);
 		--purplish-blue: hsl(243, 100%, 62%);
