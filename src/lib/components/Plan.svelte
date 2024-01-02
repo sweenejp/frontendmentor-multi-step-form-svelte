@@ -39,8 +39,8 @@
 			/></label
 		>
 	</div>
-	<div slot="form-actions">
-		<button on:click={formStore.goToPreviousStep}>Go Back</button>
+	<svelte:fragment slot="form-actions">
 		<button on:click={formStore.goToNextStep}>Next Step </button>
-	</div>
+		<button on:click={formStore.goToPreviousStep}>Go Back</button>
+	</svelte:fragment>
 </FormWrapper>

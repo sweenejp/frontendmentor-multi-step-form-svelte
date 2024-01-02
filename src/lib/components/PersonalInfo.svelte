@@ -97,7 +97,7 @@
 			<p>{errors.phone}</p>
 		{/if}
 	</div>
-	<div slot="form-actions">
+	<svelte:fragment slot="form-actions">
 		<button on:click|preventDefault={handleNext}>Next Step</button>
-	</div>
+	</svelte:fragment>
 </FormWrapper>

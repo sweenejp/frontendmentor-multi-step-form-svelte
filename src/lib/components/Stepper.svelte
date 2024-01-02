@@ -1,14 +1,65 @@
-<div>
-	<div>
-		<span>1</span><span>Step 1</span><span>Your Info</span>
+<div class="container">
+	<div class="step">
+		<div class="bullet">1</div>
+		<div class="step-text">
+			<div class="label">Step 1</div>
+			<div class="title">Your Info</div>
+		</div>
 	</div>
-	<div>
-		<span>2</span><span>Step 2</span><span>Select Plan</span>
+	<div class="step">
+		<div class="bullet">2</div>
+		<div class="step-text">
+			<div class="label">Step 2</div>
+			<div class="title">Select Plan</div>
+		</div>
 	</div>
-	<div>
-		<span>3</span><span>Step 3</span><span>Add-ons</span>
+	<div class="step">
+		<div class="bullet">3</div>
+		<div class="step-text">
+			<div class="label">Step 3</div>
+			<div class="title">Add-ons</div>
+		</div>
 	</div>
-	<div>
-		<span>4</span><span>Step 4</span><span>Summary</span>
+	<div class="step">
+		<div class="bullet">4</div>
+		<div class="step-text">
+			<div class="label">Step 4</div>
+			<div class="title">Summary</div>
+		</div>
 	</div>
 </div>
+
+<style>
+	.container {
+		padding: 32px;
+		background: url('/images/bg-sidebar-mobile.svg');
+		background-repeat: no-repeat;
+		display: flex;
+		gap: 24px;
+		justify-content: center;
+		align-items: start;
+		height: 170px;
+	}
+
+	.step {
+		display: flex;
+		gap: 16px;
+		align-items: center;
+	}
+
+	.bullet {
+		border-radius: 50%;
+		border: solid white 1px;
+		color: white;
+		padding: 16px;
+		height: 16px;
+		width: 16px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.step-text {
+		display: none;
+	}
+</style>

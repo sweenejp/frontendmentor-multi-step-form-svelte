@@ -56,8 +56,8 @@
 		<p>{total}</p>
 	</div>
 
-	<div slot="form-actions">
-		<button on:click={formStore.goToPreviousStep}>Go Back</button>
+	<svelte:fragment slot="form-actions">
 		<button on:click={handleSubmit}>Confirm</button>
-	</div>
+		<button on:click={formStore.goToPreviousStep}>Go Back</button>
+	</svelte:fragment>
 </FormWrapper>
