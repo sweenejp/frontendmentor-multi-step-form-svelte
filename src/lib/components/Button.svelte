@@ -1,12 +1,10 @@
 <script>
-	/** @type {boolean} */
-	export let primary = false;
-	/** @type {boolean} */
-	export let secondary = false;
+	/** @type {'primary' | 'secondary' | 'tertiary'} */
+	export let variant;
 </script>
 
-<!-- NOTE: writing classes this way instead of using a prop like `variant` since this helps the linter know what class names are possible. This would not be necessary if using typescript in svelte. Obviously, you could also just ignore the squiggles -->
-<button class:primary class:secondary on:click><slot /></button>
+<!-- NOTE: if a class name is dynamic, need to use template literal instead of the svelte class "directive" -->
+<button class={`${variant}`} on:click><slot /></button>
 
 <style>
 	button {
@@ -15,32 +13,45 @@
 		border: none;
 		border-radius: 5px;
 		cursor: pointer;
-		transition: background-color ease-in-out 0.1s;
+		transition: opacity ease-in-out 0.1s;
 	}
 
-	.secondary {
+	.tertiary {
 		background-color: transparent;
 		color: var(--cool-gray);
 
 		&:hover {
-			background-color: var(--light-gray);
+			opacity: 0.8;
 		}
 
 		&:focus {
-			background-color: var(--light-gray);
+			opacity: 0.8;
 		}
 	}
 
-	.primary {
+	.secondary {
 		background-color: var(--marine-blue);
 		color: white;
 
 		&:hover {
-			background-color: var(--purplish-blue);
+			opacity: 0.8;
 		}
 
 		&:focus {
-			background-color: var(--purplish-blue);
+			opacity: 0.8;
+		}
+	}
+
+	.primary {
+		background-color: var(--purplish-blue);
+		color: white;
+
+		&:hover {
+			opacity: 0.8;
+		}
+
+		&:focus {
+			opacity: 0.8;
 		}
 	}
 </style>

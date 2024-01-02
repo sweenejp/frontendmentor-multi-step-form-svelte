@@ -41,7 +41,7 @@
 		>
 	</div>
 	<svelte:fragment slot="form-actions">
-		<Button primary on:click={formStore.goToNextStep}>Next Step</Button>
-		<Button secondary on:click={formStore.goToPreviousStep}>Go Back</Button>
+		<Button variant="secondary" on:click={formStore.goToNextStep}>Next Step</Button>
+		<Button variant="tertiary" on:click={formStore.goToPreviousStep}>Go Back</Button>
 	</svelte:fragment>
 </FormWrapper>

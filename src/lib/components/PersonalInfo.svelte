@@ -68,7 +68,7 @@
 		/>
 	</div>
 	<svelte:fragment slot="form-actions">
-		<Button primary on:click={handleNext}>Next Step</Button>
+		<Button variant="secondary" on:click={handleNext}>Next Step</Button>
 	</svelte:fragment>
 </FormWrapper>
 
