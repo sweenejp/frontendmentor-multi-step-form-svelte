@@ -50,7 +50,7 @@
 
 	h2 {
 		font-size: 16px;
-		margin-bottom: 16px;
+		margin-bottom: 24px;
 		font-weight: 400;
 		color: var(--cool-gray);
 	}
