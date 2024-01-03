@@ -1,4 +1,6 @@
 <script>
+	import { fade } from 'svelte/transition';
+
 	import FormWrapper from '$lib/components/FormWrapper.svelte';
 	import { billingCycleAbrevs } from '$lib/copyMaps';
 	import { formStore, selectedBillingCycle } from '../../stores';
@@ -7,6 +9,8 @@
 	import RadioButton from './RadioButton.svelte';
 	import AdvancedIcon from './icons/AdvancedIcon.svelte';
 	import ProIcon from './icons/ProIcon.svelte';
+	import Toggle from './Toggle.svelte';
+	import { onMount } from 'svelte';
 
 	/** @type {PlanI[]} */
 	export let plans;
@@ -39,13 +43,7 @@
 				</RadioButton>
 			{/each}
 		</fieldset>
-		<label
-			>Yearly Cycle<input
-				type="checkbox"
-				name="is-yearly"
-				bind:checked={$formStore.isYearly}
-			/></label
-		>
+		<Toggle name="is-yearly" bind:checked={$formStore.isYearly} />
 	</div>
 	<svelte:fragment slot="form-actions">
 		<Button variant="secondary" on:click={formStore.goToNextStep}>Next Step</Button>

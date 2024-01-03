@@ -1,6 +1,7 @@
 <script>
 	import hasError from '$lib/hasError';
 
+	// NOTE: One of the bigger road blocks I've encountered with Svelte so far. Pretty annoying that it is not easy to basically extend props to a parent component. One way around this would be to have a single prop called "inputProps", but that ends up looking pretty ugly when the component is used. Using typescript and svelte's $$restProps might also work better in order to get things typed correctly - haven't tried it yet. However, the Svelte docs suggest not using $$restProps since it is not very performant. In React, it is easy to simply extend the props of a component since props is just a function parameter. In Svelte, each prop is it's own variable. So you can't just, for example, tell the component that its props will be all HTMLInputAttributes, plus a few custom ones like "label".
 	/** @type {string} */
 	export let label;
 	/** @type {string} */
@@ -36,7 +37,6 @@
 			return;
 		}
 
-		const { name } = event.target;
 		error = hasError(event.target);
 	}
 </script>
@@ -48,6 +48,7 @@
 			<strong class="error-message">{error}</strong>
 		{/if}
 	</div>
+	<!-- NOTE: again - annoying. There may be a better way to achieve this but need a series of if statements here because "type" cannot be dynamic when using two way binding.-->
 	{#if type === 'text'}
 		<input
 			type="text"

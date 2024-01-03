@@ -1,4 +1,9 @@
 <script>
+	import { afterUpdate } from 'svelte';
+	import { fade } from 'svelte/transition';
+	import { tweened } from 'svelte/motion';
+	import { cubicOut } from 'svelte/easing';
+
 	/** @type {string} */
 	export let label;
 	/** @type {string} */
@@ -13,34 +18,52 @@
 	export let details = '';
 	/** @type {boolean} */
 	export let selected;
+
+	/** @type {number} */
+	let containerHeight;
+	// @ts-ignore
+	const heightTweened = tweened(containerHeight, { duration: 100, easing: cubicOut });
+
+	// NOTE: interesting an ultimately easy way to animate height changes. Took a while to stumble upon this solution though. Another solution might have been to make a custom event and event listener
+	afterUpdate(() => {
+		// console.log({ prev: $heightTweened, new: containerHeight });
+		heightTweened.set(containerHeight);
+	});
 </script>
 
-<label for={name} class:selected>
-	<slot name="icon" />
-	<div class="labels">
-		<div class="label--main">{label}</div>
-		<div class="label--sublabel">{sublabel}</div>
-		{#if details}
-			<div class="label--details">{details}</div>
-		{/if}
+<label for={name} class:selected style="overflow: hidden; height: {$heightTweened}px;">
+	<div bind:clientHeight={containerHeight} class="container">
+		<slot name="icon" />
+		<div class="labels">
+			<div class="label--main">{label}</div>
+			<div class="label--sublabel">{sublabel}</div>
+			<!-- NOTE: pretty amazing how easy it is to do fade transitions like this when something mounts/unmounts  -->
+			{#if details}
+				<div in:fade={{ duration: 300 }} class="label--details">
+					{details}
+				</div>
+			{/if}
+			<input type="radio" {name} id={name} {value} bind:group />
+		</div>
 	</div>
-	<input type="radio" {name} id={name} {value} bind:group />
 </label>
 
 <style>
 	label {
-		display: block;
 		border: solid 1px var(--light-gray);
 		border-radius: 5px;
 		cursor: pointer;
-		padding: 16px;
-		display: flex;
-		gap: 16px;
 
 		&.selected {
 			background-color: var(--alabaster);
 			border-color: var(--purplish-blue);
 		}
+	}
+
+	.container {
+		padding: 16px;
+		display: flex;
+		gap: 16px;
 	}
 
 	.labels {
