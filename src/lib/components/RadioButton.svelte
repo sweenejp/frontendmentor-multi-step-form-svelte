@@ -30,6 +30,9 @@
 		heightTweened.set(containerHeight);
 	});
 
+	// another option is to do a reactive statement. Not sure what is preferred in this case.
+	// $: heightTweened.set(containerHeight);
+
 	/** @param {KeyboardEvent} event */
 	function handleKeyDown(event) {
 		if (event.key === ' ') {
@@ -38,6 +41,7 @@
 	}
 </script>
 
+<!-- TODO `selected` is redundant to `group === value`  -->
 <div role="radio" aria-checked={group === value} tabindex="0" on:keydown={handleKeyDown}>
 	<label for={name} class:selected style="overflow: hidden; height: {$heightTweened}px;">
 		<div bind:clientHeight={containerHeight} class="container">
@@ -66,6 +70,10 @@
 
 		&.selected {
 			background-color: var(--alabaster);
+			border-color: var(--purplish-blue);
+		}
+
+		&:hover {
 			border-color: var(--purplish-blue);
 		}
 	}

@@ -3,32 +3,30 @@
 	import { billingCycleAbrevs } from '$lib/copyMaps';
 	import { formStore, selectedBillingCycle } from '../../stores';
 	import Button from './Button.svelte';
+	import CheckboxGroup from './CheckboxGroup.svelte';
 
 	/** @type {AddOnI[]} */
 	export let addOns;
+
+	/** @param {AddOnI['billingCycles']} billingCycles*/
+	function generatePrice(billingCycles) {
+		return `+$${billingCycles[$selectedBillingCycle].price}/${billingCycleAbrevs[$selectedBillingCycle]}`;
+	}
 </script>
 
 <FormWrapper title="Pick Add-ons" subtitle="Add-ons help enhance your gaming experience.">
 	<div slot="form-content">
 		<fieldset>
-			{#each addOns as addOn}
-				<div>
-					<input
-						type="checkbox"
-						id={addOn.value}
-						name="add-ons"
-						value={addOn.value}
-						bind:group={$formStore.addOns}
-					/>
-					<label for={addOn.value}>{addOn.displayValue}</label>
-					<p>{addOn.description}</p>
-					<p>
-						${addOn.billingCycles[$selectedBillingCycle].price}/{billingCycleAbrevs[
-							$selectedBillingCycle
-						]}
-					</p>
-				</div>
-			{/each}
+			<CheckboxGroup
+				name="add-ons"
+				checkboxes={addOns.map(({ billingCycles, description, displayValue, value }) => ({
+					value,
+					details: description,
+					label: displayValue,
+					sublabel: generatePrice(billingCycles)
+				}))}
+				bind:group={$formStore.addOns}
+			/>
 		</fieldset>
 	</div>
 	<svelte:fragment slot="form-actions">
@@ -36,3 +34,12 @@
 		<Button variant="tertiary" on:click={formStore.goToPreviousStep}>Go Back</Button>
 	</svelte:fragment>
 </FormWrapper>
+
+<style>
+	fieldset {
+		border: none;
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+</style>
