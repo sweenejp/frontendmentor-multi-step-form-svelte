@@ -73,7 +73,11 @@
 	</div>
 
 	<svelte:fragment slot="form-actions">
-		<Button variant="primary" on:click={handleSubmit}>Confirm</Button>
+		<Button
+			variant="primary"
+			on:click={handleSubmit}
+			loading={$formSubmissionStore.status === 'pending'}>Confirm</Button
+		>
 		<Button variant="tertiary" on:click={formStore.goToPreviousStep}>Go Back</Button>
 	</svelte:fragment>
 </FormWrapper>

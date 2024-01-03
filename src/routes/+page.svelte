@@ -11,9 +11,7 @@
 	export let data;
 </script>
 
-{#if $formSubmissionStore.status === 'pending'}
-	<p>loading...</p>
-{:else if $formSubmissionStore.status === 'success'}
+{#if $formSubmissionStore.status === 'success'}
 	<Confirmation plans={data.plans} addOns={data.addOns} />
 
 	<!-- form submission is idle -->

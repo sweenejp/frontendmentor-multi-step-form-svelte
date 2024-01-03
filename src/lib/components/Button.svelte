@@ -1,10 +1,20 @@
 <script>
 	/** @type {'primary' | 'secondary' | 'tertiary'} */
 	export let variant;
+	/** @type {boolean} */
+	export let disabled = false;
+	/** @type {boolean} */
+	export let loading = false;
 </script>
 
 <!-- NOTE: if a class name is dynamic, need to use template literal instead of the svelte class "directive" -->
-<button class={`${variant}`} on:click><slot /></button>
+<button class={`${variant}`} disabled={disabled || loading} on:click>
+	{#if loading}
+		<span>loading...</span>
+	{:else}
+		<slot />
+	{/if}
+</button>
 
 <style>
 	button {
