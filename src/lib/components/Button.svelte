@@ -19,7 +19,7 @@
 <style>
 	button {
 		padding: 10px 18px;
-		font-weight: 600;
+		font-weight: 500;
 		border: none;
 		border-radius: 5px;
 		cursor: pointer;

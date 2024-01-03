@@ -106,7 +106,7 @@
 
 	input {
 		color: var(--marine-blue);
-		font-weight: 600;
+		font-weight: 500;
 		padding: 8px;
 		display: block;
 		border-radius: 5px;

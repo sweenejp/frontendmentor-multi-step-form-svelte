@@ -89,13 +89,13 @@
 	}
 
 	.label--main {
-		font-weight: 600;
+		font-weight: 500;
 		color: var(--marine-blue);
 	}
 
 	.label--sublabel {
 		color: var(--purplish-blue);
-		font-weight: 600;
+		font-weight: 500;
 	}
 
 	.label--details {

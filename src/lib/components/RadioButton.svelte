@@ -91,7 +91,7 @@
 	}
 
 	.label--main {
-		font-weight: 600;
+		font-weight: 500;
 		color: var(--marine-blue);
 	}
 

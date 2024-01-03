@@ -35,7 +35,7 @@
 
 	@font-face {
 		font-family: 'Ubuntu';
-		font-weight: 600;
+		font-weight: 500;
 		font-style: normal;
 		src: url('/fonts/Ubuntu-Medium.ttf');
 	}

@@ -89,7 +89,7 @@
 	}
 
 	.plan-value {
-		font-weight: 600;
+		font-weight: 500;
 		font-size: 18px;
 	}
 
@@ -108,7 +108,7 @@
 	}
 
 	.plan-price {
-		font-weight: 600;
+		font-weight: 500;
 		color: var(--marine-blue);
 	}
 
