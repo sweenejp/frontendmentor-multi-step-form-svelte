@@ -7,7 +7,6 @@
 	import Plan from '$lib/components/Plan.svelte';
 	import Summary from '$lib/components/Summary.svelte';
 	import { formStore, formSubmissionStore } from '../stores';
-	import FadeIn from '$lib/components/FadeIn.svelte';
 
 	export let data;
 </script>
@@ -15,27 +14,17 @@
 {#if $formSubmissionStore.status === 'pending'}
 	<p>loading...</p>
 {:else if $formSubmissionStore.status === 'success'}
-	<FadeIn>
-		<Confirmation plans={data.plans} addOns={data.addOns} />
-	</FadeIn>
+	<Confirmation plans={data.plans} addOns={data.addOns} />
 
 	<!-- form submission is idle -->
 {:else if $formStore.step === 1}
-	<FadeIn>
-		<PersonalInfo />
-	</FadeIn>
+	<PersonalInfo />
 {:else if $formStore.step === 2}
-	<FadeIn>
-		<Plan plans={data.plans} />
-	</FadeIn>
+	<Plan plans={data.plans} />
 {:else if $formStore.step === 3}
-	<FadeIn>
-		<AddOns addOns={data.addOns} />
-	</FadeIn>
+	<AddOns addOns={data.addOns} />
 {:else if $formStore.step === 4}
-	<FadeIn>
-		<Summary plans={data.plans} addOns={data.addOns} />
-	</FadeIn>
+	<Summary plans={data.plans} addOns={data.addOns} />
 {/if}
 
 <style>
