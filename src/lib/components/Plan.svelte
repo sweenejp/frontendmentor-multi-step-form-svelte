@@ -43,12 +43,14 @@
 				</RadioButton>
 			{/each}
 		</fieldset>
-		<Toggle
-			name="is-yearly"
-			onLabel="Yearly"
-			offLabel="Monthly"
-			bind:checked={$formStore.isYearly}
-		/>
+		<div class="toggle-container">
+			<Toggle
+				name="is-yearly"
+				onLabel="Yearly"
+				offLabel="Monthly"
+				bind:checked={$formStore.isYearly}
+			/>
+		</div>
 	</div>
 	<svelte:fragment slot="form-actions">
 		<Button variant="secondary" on:click={formStore.goToNextStep}>Next Step</Button>
@@ -64,5 +66,13 @@
 		gap: 12px;
 
 		margin-bottom: 24px;
+	}
+
+	.toggle-container {
+		background-color: var(--magnolia);
+		padding: 12px;
+		border-radius: 7px;
+		display: flex;
+		justify-content: center;
 	}
 </style>

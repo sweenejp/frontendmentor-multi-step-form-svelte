@@ -31,7 +31,7 @@
 
 <style>
 	label {
-		display: flex;
+		display: inline-flex;
 		gap: 8px;
 	}
 
