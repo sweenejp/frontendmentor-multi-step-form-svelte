@@ -1,6 +1,4 @@
 <script>
-	import { fade } from 'svelte/transition';
-
 	import FormWrapper from '$lib/components/FormWrapper.svelte';
 	import { billingCycleAbrevs } from '$lib/copyMaps';
 	import { formStore, selectedBillingCycle } from '../../stores';
@@ -10,7 +8,7 @@
 	import AdvancedIcon from './icons/AdvancedIcon.svelte';
 	import ProIcon from './icons/ProIcon.svelte';
 	import Toggle from './Toggle.svelte';
-	import { onMount } from 'svelte';
+	import Paper from './Paper.svelte';
 
 	/** @type {PlanI[]} */
 	export let plans;
@@ -43,14 +41,15 @@
 				</RadioButton>
 			{/each}
 		</fieldset>
-		<div class="toggle-container">
+		<!-- NOTE: handy, but a little annoying. Doesn't have type safety. I don't think React handles this case well either though. Using something like https://cva.style/docs might help make this better. -->
+		<Paper --display="flex" --flex-direction="column" --align-items="center">
 			<Toggle
 				name="is-yearly"
 				onLabel="Yearly"
 				offLabel="Monthly"
 				bind:checked={$formStore.isYearly}
 			/>
-		</div>
+		</Paper>
 	</div>
 	<svelte:fragment slot="form-actions">
 		<Button variant="secondary" on:click={formStore.goToNextStep}>Next Step</Button>
@@ -65,13 +64,5 @@
 		flex-direction: column;
 		gap: 12px;
 		margin-bottom: 24px;
-	}
-
-	.toggle-container {
-		background-color: var(--magnolia);
-		padding: 12px;
-		border-radius: 7px;
-		display: flex;
-		justify-content: center;
 	}
 </style>
