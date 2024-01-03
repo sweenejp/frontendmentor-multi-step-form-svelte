@@ -78,6 +78,6 @@
 	}
 
 	:global(body) {
-		background-color: var(--light-gray);
+		background-color: var(--magnolia);
 	}
 </style>
