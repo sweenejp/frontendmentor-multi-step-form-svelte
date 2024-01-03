@@ -29,30 +29,40 @@
 		// console.log({ prev: $heightTweened, new: containerHeight });
 		heightTweened.set(containerHeight);
 	});
+
+	/** @param {KeyboardEvent} event */
+	function handleKeyDown(event) {
+		if (event.key === ' ') {
+			group = value;
+		}
+	}
 </script>
 
-<label for={name} class:selected style="overflow: hidden; height: {$heightTweened}px;">
-	<div bind:clientHeight={containerHeight} class="container">
-		<slot name="icon" />
-		<div class="labels">
-			<div class="label--main">{label}</div>
-			<div class="label--sublabel">{sublabel}</div>
-			<!-- NOTE: pretty amazing how easy it is to do fade transitions like this when something mounts/unmounts  -->
-			{#if details}
-				<div in:fade={{ duration: 300 }} class="label--details">
-					{details}
-				</div>
-			{/if}
-			<input type="radio" {name} id={name} {value} bind:group />
+<div role="radio" aria-checked={group === value} tabindex="0" on:keydown={handleKeyDown}>
+	<label for={name} class:selected style="overflow: hidden; height: {$heightTweened}px;">
+		<div bind:clientHeight={containerHeight} class="container">
+			<slot name="icon" />
+			<div class="labels">
+				<div class="label--main">{label}</div>
+				<div class="label--sublabel">{sublabel}</div>
+				<!-- NOTE: pretty amazing how easy it is to do fade transitions like this when something mounts/unmounts  -->
+				{#if details}
+					<div in:fade={{ duration: 300 }} class="label--details">
+						{details}
+					</div>
+				{/if}
+				<input type="radio" {name} id={name} {value} bind:group />
+			</div>
 		</div>
-	</div>
-</label>
+	</label>
+</div>
 
 <style>
 	label {
 		border: solid 1px var(--light-gray);
 		border-radius: 5px;
 		cursor: pointer;
+		display: block;
 
 		&.selected {
 			background-color: var(--alabaster);
