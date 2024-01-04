@@ -40,7 +40,7 @@
 <FormWrapper title="Finishing up" subtitle="Double-check everything looks OK before confirming.">
 	<div slot="form-content">
 		<Paper --padding="24px">
-			<div class="plan">
+			<div class="plan" class:has-add-ons={$formStore.addOns.length}>
 				<p class="plan-value">
 					{selectedPlan?.displayValue} ({billingCycleFull[$selectedBillingCycle]})
 				</p>
@@ -84,8 +84,11 @@
 
 <style>
 	.plan {
-		border-bottom: 1px solid var(--light-gray);
 		padding-bottom: 24px;
+
+		&.has-add-ons {
+			border-bottom: 1px solid var(--light-gray);
+		}
 	}
 
 	.plan-value {
