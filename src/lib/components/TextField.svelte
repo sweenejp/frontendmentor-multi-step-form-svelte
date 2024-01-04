@@ -107,7 +107,7 @@
 	input {
 		color: var(--marine-blue);
 		font-weight: 500;
-		padding: 8px;
+		padding: 12px;
 		display: block;
 		border-radius: 5px;
 		border: 1px solid var(--light-gray);
