@@ -50,6 +50,12 @@
 			</li>
 		{/if}
 	</ul>
+	<br />
+	<div class="attribution">
+		Challenge by
+		<a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded
+		by <a href="https://www.jimmysweeney.page">Jimmy Sweeney</a>.
+	</div>
 </div>
 
 <style>
