@@ -7,20 +7,22 @@
 	export let subtitle;
 </script>
 
-<Stepper />
 <div class="container">
-	<h1>{title}</h1>
-	<h2>{subtitle}</h2>
-	<form>
-		<slot name="form-content" />
-		<div class="form-actions">
-			<slot name="form-actions" />
-		</div>
-	</form>
+	<Stepper />
+	<div class="content">
+		<h1>{title}</h1>
+		<h2>{subtitle}</h2>
+		<form>
+			<slot name="form-content" />
+			<div class="form-actions">
+				<slot name="form-actions" />
+			</div>
+		</form>
+	</div>
 </div>
 
 <style>
-	.container {
+	.content {
 		top: -70px;
 		position: relative;
 		width: 90%;
@@ -53,5 +55,17 @@
 		margin-bottom: 24px;
 		font-weight: 400;
 		color: var(--cool-gray);
+	}
+
+	@media (min-width: 800px) {
+		.container {
+			display: flex;
+			padding: 16px;
+			align-items: stretch;
+		}
+
+		.content {
+			position: static;
+		}
 	}
 </style>
