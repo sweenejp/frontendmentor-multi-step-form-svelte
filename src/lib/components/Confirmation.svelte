@@ -55,14 +55,12 @@
 <style>
 	.container {
 		max-width: 400px;
-		width: 90%;
 		margin: auto;
 		text-align: center;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		height: 100vh;
 		color: var(--cool-gray);
 	}
 
