@@ -66,5 +66,9 @@
 
 	:global(body) {
 		background-color: var(--magnolia);
+
+		@media (min-width: 800px) {
+			background-color: white;
+		}
 	}
 </style>

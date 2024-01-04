@@ -82,12 +82,12 @@
 	@media (min-width: 800px) {
 		.container {
 			background-image: url('/images/bg-sidebar-desktop.svg');
-			background-size: auto;
+			background-position: center;
 			border-radius: 10px;
 			height: auto;
 			flex-direction: column;
 			justify-content: start;
-			min-width: 270px;
+			min-width: 300px;
 		}
 
 		.step-text {
