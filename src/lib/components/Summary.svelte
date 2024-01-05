@@ -2,7 +2,7 @@
 	import FormWrapper from '$lib/components/FormWrapper.svelte';
 	import { billingCycleAbrevs, billingCycleFull, billingCyclePer } from '$lib/copyMaps';
 	import mockFetch from '$lib/mockFetch';
-	import { formStore, selectedBillingCycle, formSubmissionStore } from '../../stores';
+	import { formStore, selectedBillingCycle, formSubmissionStore } from '../stores';
 	import Button from './Button.svelte';
 	import Paper from './Paper.svelte';
 

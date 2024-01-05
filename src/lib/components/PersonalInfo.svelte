@@ -1,7 +1,7 @@
 <script>
 	import FormWrapper from '$lib/components/FormWrapper.svelte';
 	import hasError from '$lib/hasError';
-	import { formStore } from '../../stores';
+	import { formStore } from '../stores';
 	import Button from './Button.svelte';
 	import TextField from './TextField.svelte';
 

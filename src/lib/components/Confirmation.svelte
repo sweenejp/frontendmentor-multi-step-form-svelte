@@ -1,7 +1,7 @@
 <script>
 	import { billingCycleFull } from '$lib/copyMaps';
 	import ThankYouIcon from './icons/ThankYouIcon.svelte';
-	import { formSubmissionStore } from '../../stores';
+	import { formSubmissionStore } from '../stores';
 
 	/** @type {PlanI[]} */
 	export let plans;

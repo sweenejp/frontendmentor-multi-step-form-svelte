@@ -1,5 +1,5 @@
 <script>
-	import { formStore } from '../../stores';
+	import { formStore } from '../stores';
 </script>
 
 <div class="container">

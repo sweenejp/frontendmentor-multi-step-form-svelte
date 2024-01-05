@@ -1,7 +1,7 @@
 <script>
 	import FormWrapper from '$lib/components/FormWrapper.svelte';
 	import { billingCycleAbrevs } from '$lib/copyMaps';
-	import { formStore, selectedBillingCycle } from '../../stores';
+	import { formStore, selectedBillingCycle } from '../stores';
 	import ArcadeIcon from './icons/ArcadeIcon.svelte';
 	import Button from './Button.svelte';
 	import RadioButton from './RadioButton.svelte';

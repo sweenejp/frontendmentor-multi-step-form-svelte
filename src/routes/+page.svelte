@@ -4,7 +4,7 @@
 	import PersonalInfo from '$lib/components/PersonalInfo.svelte';
 	import Plan from '$lib/components/Plan.svelte';
 	import Summary from '$lib/components/Summary.svelte';
-	import { formStore, formSubmissionStore } from '../stores';
+	import { formStore, formSubmissionStore } from '../lib/stores';
 
 	export let data;
 </script>
