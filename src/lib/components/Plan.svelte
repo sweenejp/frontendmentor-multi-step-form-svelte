@@ -27,7 +27,6 @@
 						? `${plan.billingCycles[$selectedBillingCycle].monthsFree} months free`
 						: ''}
 					bind:group={$formStore.plan}
-					selected={$formStore.plan === plan.value}
 				>
 					<svelte:fragment slot="icon">
 						{#if plan.value === 'arcade'}

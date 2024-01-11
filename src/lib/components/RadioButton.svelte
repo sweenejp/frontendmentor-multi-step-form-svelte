@@ -16,8 +16,6 @@
 	export let sublabel;
 	/** @type {string} */
 	export let details = '';
-	/** @type {boolean} */
-	export let selected;
 
 	/** @type {number} */
 	let containerHeight;
@@ -39,11 +37,12 @@
 			group = value;
 		}
 	}
+
+	$: selected = group === value;
 </script>
 
-<!-- TODO `selected` is redundant to `group === value`  -->
-<div role="radio" aria-checked={group === value} tabindex="0" on:keydown={handleKeyDown}>
-	<label for={name} class:selected style="overflow: hidden; height: {$heightTweened}px;">
+<div role="radio" aria-checked={selected} tabindex="0" on:keydown={handleKeyDown}>
+	<label class:selected style="overflow: hidden; height: {$heightTweened}px;">
 		<div bind:clientHeight={containerHeight} class="container">
 			<slot name="icon" />
 			<div class="labels">
