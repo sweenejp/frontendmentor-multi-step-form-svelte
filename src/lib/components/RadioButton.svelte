@@ -7,8 +7,6 @@
 	/** @type {string} */
 	export let label;
 	/** @type {string} */
-	export let name;
-	/** @type {string} */
 	export let value;
 	/** @type {string} */
 	export let group;
@@ -22,7 +20,7 @@
 	// @ts-ignore
 	const heightTweened = tweened(containerHeight, { duration: 100, easing: cubicOut });
 
-	// NOTE: interesting an ultimately easy way to animate height changes. Took a while to stumble upon this solution though. Another solution might have been to make a custom event and event listener
+	// NOTE: interesting an ultimately easy way to animate height changes. Took a while to stumble upon this solution though. Another solution might have been to make a custom event and evet listener
 	afterUpdate(() => {
 		// console.log({ prev: $heightTweened, new: containerHeight });
 		heightTweened.set(containerHeight);
@@ -54,7 +52,7 @@
 						{details}
 					</div>
 				{/if}
-				<input type="radio" {name} id={name} {value} bind:group />
+				<input type="radio" {value} bind:group />
 			</div>
 		</div>
 	</label>

@@ -20,7 +20,6 @@
 			{#each plans as plan}
 				<RadioButton
 					label={plan.displayValue}
-					name={plan.value}
 					value={plan.value}
 					sublabel={`$${plan.billingCycles[$selectedBillingCycle].price}/${billingCycleAbrevs[$selectedBillingCycle]}`}
 					details={plan.billingCycles[$selectedBillingCycle].monthsFree
