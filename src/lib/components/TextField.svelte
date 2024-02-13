@@ -28,6 +28,7 @@
 			return;
 		}
 
+		// NOTE - this is intersting... and I'm not sure if this is an anti pattern or not. It's certainly not allowed in React. Here I am mutating a prop.
 		error = hasError(event.target);
 	}
 
